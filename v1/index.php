@@ -1,6 +1,6 @@
 <?php
 require_once 'userInfo.php';
-require_once 'sql.php';
+require_once 'db/sql.php';
 require_once 'vendor/autoload.php';
 
 //Routes:
