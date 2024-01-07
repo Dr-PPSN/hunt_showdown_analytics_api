@@ -3,7 +3,6 @@ require_once 'db.php';
 
 function executeSQL($SQL, $params = null) {
   global $conn;
-  global $notification;
   try {
     $statement = $conn->prepare($SQL);
     if ($statement->execute() === true) {
@@ -12,7 +11,7 @@ function executeSQL($SQL, $params = null) {
         return true;
       } else if ($result === false) {
         if ($conn->error != '') {
-          $notification = 'SQL Fehler: ' . $conn->error;
+          echo 'SQL Fehler: ' . $conn->error;
         }
         return false;
       } else {
@@ -24,13 +23,13 @@ function executeSQL($SQL, $params = null) {
       }
     } else {
       if ($conn->error != '') {
-        $notification = 'SQL Fehler: ' . $conn->error;
+        echo 'SQL Fehler: ' . $conn->error;
       }
       return false;
     }
   } catch (Exception $e) {
     if ($conn->error != '') {
-      $notification = 'SQL Fehler: ' . $conn->error;
+      echo 'SQL Fehler: ' . $conn->error;
     }
     return false;
   }
