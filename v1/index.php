@@ -35,7 +35,11 @@ $router->get('/getWeather/(\w+)', function($weatherType) {
     header('Content-Type: application/json');
     $sql = "SELECT * FROM weather_log WHERE weather = '$weatherType'";
     $result = executeSQL($sql);
-    echo json_encode($result);
+    if (empty($result)) {
+        echo http_response_code(404);
+    } else {
+        echo json_encode($result);
+    }
 });
 
 $router->get('/getWeather/count', function() {
@@ -47,11 +51,29 @@ $router->get('/getWeather/count', function() {
 
 $router->put('/putWeather/(\w+)', function($weatherType) {
     header('Content-Type: application/json');
-    $sql = 'UPDATE weather_log SET counter = counter + 1 WHERE weather = "'. $weatherType .'"';
-    $result = executeSQL($sql);
-    $sql = "SELECT * FROM weather_log WHERE weather = '$weatherType'";
-    $result = executeSQL($sql);
-    echo json_encode($result);
+    $possibleWeatherTypes = array(
+        'sonnenaufgang', 
+        'sonnenuntergang', 
+        'regen', 
+        'wolkenlos', 
+        'nebel', 
+        'gold', 
+        'mondnacht', 
+        'nacht', 
+        'event'
+    );
+    if (empty($weatherType)) {
+        echo http_response_code(404);
+    }
+    else if (in_array($weatherType, $possibleWeatherTypes)) {
+        $sql = 'UPDATE weather_log SET counter = counter + 1 WHERE weather = "'. $weatherType .'"';
+        $result = executeSQL($sql);
+        $sql = "SELECT * FROM weather_log WHERE weather = '$weatherType'";
+        $result = executeSQL($sql);
+        echo json_encode($result);
+    } else {
+        echo http_response_code(404);
+    }
 });
 
 $router->set404(function() {
