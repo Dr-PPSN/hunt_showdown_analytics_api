@@ -21,7 +21,33 @@ require_once 'vendor/autoload.php';
 $router = new \Bramus\Router\Router();
 
 $router->get('/', function() {
-    echo 'Hello World!';
+    echo '<script src="script/script.js"></script>';
+    echo '<br><center><h1>API-Dokumentation:</h1></center><br><br>';
+    echo '<br><h2><u>GET:</u></h2>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/">https://api.rohrpasser.de/hunt_showdown_analytics/v1/</a> == Dokumentation</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather</a> == all weather data</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/sonnenaufgang">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/sonnenaufgang</a> == number of sunrises</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/sonnenuntergang">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/sonnenuntergang</a> == number of sunsets</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/regen">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/regen</a> == number of rainy days</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/wolkenlos">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/wolkenlos</a> == number of cloudless days</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/nebel">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/nebel</a> == number of foggy days</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/gold">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/gold</a> == number of golden days</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/mondnacht">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/mondnacht</a> == number of moon nights</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/nacht">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/nacht</a> == number of nights</h3>';
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/event">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/event</a> == number of event weather</h3>';
+
+    echo '<h3><a href="https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/count">https://api.rohrpasser.de/hunt_showdown_analytics/v1/getWeather/count</a> == count entries</h3>';
+
+    echo '<hr><br><h2><u>PUT:</u></h2>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/sonnenaufgang == add 1 to number of sunrises   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/sonnenaufgang\')">PUT</button></h3>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/sonnenuntergang == add 1 to number of sunsets   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/sonnenuntergang\')">PUT</button></h3>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/regen == add 1 to number of rainy days   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/regen\')">PUT</button></h3>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/wolkenlos == add 1 to number of cloudless days   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/wolkenlos\')">PUT</button></h3>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/nebel == add 1 to number of foggy days   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/nebel\')">PUT</button></h3>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/gold == add 1 to number of golden days   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/gold\')">PUT</button></h3>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/mondnacht == add 1 to number of moon nights   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/mondnacht\')">PUT</button></h3>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/nacht == add 1 to number of nights   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/nacht\')">PUT</button></h3>';
+    echo '<h3>https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/event == add 1 to number of event weather   <button onclick="putRequest(\'https://api.rohrpasser.de/hunt_showdown_analytics/v1/putWeather/event\')">PUT</button></h3>';
 });
 
 $router->get('/getWeather', function() {
